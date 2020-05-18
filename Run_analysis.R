@@ -10,6 +10,15 @@ subject_train <- read.table("/Users/vrsreeganesh/Project_data/train/subject_trai
 x_train <- read.table("/Users/vrsreeganesh/Project_data/train/X_train.txt", col.names = features$functions)
 y_train <- read.table("/Users/vrsreeganesh/Project_data/train/y_train.txt", col.names = "code")
 
+# start combining
+x <- rbind(x_train,x_test)
+Y <- rbind(y_train,y_test)
+Subject <- rbind(subject_train,subject_test)
+Merged_Data <- cbind(Subject, Y, x)
+TidyData <- Merged_Data %>% select(subject, code, contains("mean"), contains("std"))
+TidyData$code <- activities[TidyData$code,2]
+
+
 # naming things in the right way
 names(TidyData)[2] = "activity"
 names(TidyData)<-gsub("Acc", "Accelerometer", names(TidyData))
