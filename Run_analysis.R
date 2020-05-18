@@ -1,14 +1,14 @@
 # final assignment script
 
 # Here, we are reading the different data from the files
-features <- read.table("/Users/vrsreeganesh/Project_data/features.txt", col.names = c("n","functions"))
-activities <- read.table("/Users/vrsreeganesh/Project_data/activity_labels.txt", col.names = c("code","activity"))
-subject_test <- read.table("/Users/vrsreeganesh/Project_data/test/subject_test.txt", col.names = "subject")
-x_test <- read.table("/Users/vrsreeganesh/Project_data/test/X_test.txt", col.names = features$functions)
-y_test <- read.table("/Users/vrsreeganesh/Project_data/test/y_test.txt", col.names = "code")
-subject_train <- read.table("/Users/vrsreeganesh/Project_data/train/subject_train.txt", col.names = "subject")
-x_train <- read.table("/Users/vrsreeganesh/Project_data/train/X_train.txt", col.names = features$functions)
-y_train <- read.table("/Users/vrsreeganesh/Project_data/train/y_train.txt", col.names = "code")
+features <- read.table("/Project_data/features.txt", col.names = c("n","functions"))
+activities <- read.table("/Project_data/activity_labels.txt", col.names = c("code","activity"))
+subject_test <- read.table("/Project_data/test/subject_test.txt", col.names = "subject")
+x_test <- read.table("/Project_data/test/X_test.txt", col.names = features$functions)
+y_test <- read.table("/Project_data/test/y_test.txt", col.names = "code")
+subject_train <- read.table("/Project_data/train/subject_train.txt", col.names = "subject")
+x_train <- read.table("/Project_data/train/X_train.txt", col.names = features$functions)
+y_train <- read.table("/Project_data/train/y_train.txt", col.names = "code")
 
 # start combining
 x <- rbind(x_train,x_test)
