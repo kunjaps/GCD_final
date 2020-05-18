@@ -1,0 +1,83 @@
+The run_analysis script does the following
+
+1. Loading the data into the variables
+	
+	'features' variable holds the contents of features.txt
+		Dimensions : 561 x 2
+		The features selected comes from accelerometer and gyroscope data
+	
+	activities <- activity_labels.txt
+		Dimensions : 6 x 2
+		List of activities performed when the corresponding measurements were taken and its 
+		codes (labels)
+		
+	subject_test <- test/subject_test.txt 
+		Dimensions : 2947 x 1 
+		contains test data of 9/30 volunteer test subjects being observed
+
+	x_test <- test/X_test.txt
+		Dimensions : 2947 rows, 561 columns 
+		contains recorded features test data
+
+	y_test <- test/y_test.txt
+		Dimensions : 2947 x 1 
+		contains test data of activities’code labels
+
+	subject_train <- test/subject_train.txt 
+		Dimensions : 7352 rows, 1 column 
+		contains train data of 21/30 volunteer subjects being observed
+
+	x_train <- test/X_train.txt 
+		Dimensions : 7352 rows, 561 columns 
+		contains recorded features train data
+
+	y_train <- test/y_train.txt
+		Dimensions : 7352 rows, 1 columns 
+		contains train data of activities’code labels 
+
+2. Merging the datsets
+	
+	X 
+		Dimensions : 10299 x 561
+		X is created by merging x_train and x_test using rbind() 
+	
+	Y
+		Dimension : 10299 x 1
+		Y is created by merging y_train and y_test using rbind()
+	
+	Subject 
+		Dimension : 10299x1
+		Subject is created by merging subject_train and subject_test
+
+	Merged_Data
+		Dimension : 10299x563
+		Merged_Data is created by merging Subject, Y and X using cbind()
+
+3. Extracting only the means and standard deviations
+	
+	TidyData 
+		Dimensions : 10299 x 88
+		This is created by selecting only columns: subject, code and the measurements on 
+		the mean and standard deviation (std) for each measurement from the MergedData
+
+4. The names for variables are intuitive ones and doesn't produce any ambiguity. 
+
+5. The labels in the data set are
+	
+	code column in TidyData renamed into activities
+	Acc in column’s name replaced by Accelerometer
+	Gyro in column’s name replaced by Gyroscope
+	BodyBody in column’s name replaced by Body
+	Mag in column’s name replaced by Magnitude
+	All variables that start with character f in column’s name replaced by Frequency
+	All variables that start with character t in column’s name replaced by Time
+
+6. Final touches
+	
+	FinalData
+		Dimensions : 180 x 88
+		This is created by summarising TidyData by taking the means of each variable for 
+		each activity and each subject, after grouped by subject and activity
+
+	FinalData.txt
+		Export FinalData into a txt file. 
